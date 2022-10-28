@@ -8,8 +8,7 @@ public class producer extends Thread{
     private final int EOF=-1;
     private BufferedReader stdIn=new BufferedReader(new InputStreamReader(System.in));
 
-    public producer
-            (container c) {
+    public producer(container c) {
         cont = c;
     }
 

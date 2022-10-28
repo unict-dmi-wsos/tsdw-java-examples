@@ -1,20 +1,26 @@
 package edu.unict.tswd.thread.hellothread;
 // Inspired by www.dmi.unict.it/tramonta/lessons/sd/jthread.tar
-import java.util.Random;
+import static java.lang.Thread.sleep;
 
-public class hello {
+public class hello2 {
     public static void main(String[] args) throws InterruptedException {
-        // Main is a deamon thread
+        // Main is a deamon
         Thread tMain = Thread.currentThread();
         System.out.println("Main Thread "+tMain.toString());
-        // Let's create a new thread with method 1
-        myThread t = new myThread();
+        myThread2 t = new myThread2();
         // Start thread
         t.start();
-        // In "parallel" here
+        // Create another thread
+        myRunnable myRunnable = new myRunnable();
+        Thread myRunnableThread = new Thread(myRunnable);
+        // Start
+        myRunnableThread.start();
+
+        // In parallel here
         for (int i = 0; i < 10; i++) {
             System.out.println("<");
         }
+
         System.out.println("");
         System.out.println("This is the end");
     }
