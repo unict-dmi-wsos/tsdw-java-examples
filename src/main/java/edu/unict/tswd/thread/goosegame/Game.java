@@ -4,7 +4,7 @@ package edu.unict.tswd.thread.goosegame;
 public class Game {
     int round=0;
 
-    public synchronized int getRound(){
+    public int getRound(){
         return(round);
     }
 
