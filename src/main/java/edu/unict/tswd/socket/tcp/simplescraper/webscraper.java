@@ -22,7 +22,7 @@ public class webscraper {
         try
         {
             // Connect to the server
-            Socket socket = new Socket( server, 80 );
+            Socket socket = new Socket(server,443);
 
             // Create input and output streams to read from and write to the server
             PrintStream out = new PrintStream( socket.getOutputStream() );

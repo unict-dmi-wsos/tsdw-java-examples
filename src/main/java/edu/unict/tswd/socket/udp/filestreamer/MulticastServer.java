@@ -11,7 +11,7 @@ public class MulticastServer {
     // porta al di fuori del range 1-1024 !
     // dichiarata come statica perchè caratterizza il server
 
-    public static final String FILE = "resources/saggezza.txt";
+    public static final String FILE = "resources/dante.txt";
     static BufferedReader in = null;
     static boolean moreLines = true; 		
 		

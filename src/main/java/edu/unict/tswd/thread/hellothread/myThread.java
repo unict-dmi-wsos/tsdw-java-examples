@@ -12,7 +12,7 @@ public class myThread extends Thread {
         Thread t = Thread.currentThread();
         System.out.println("myThread running pid " + t.toString());
         System.out.println(t.getName());
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 1000000000; i++) {
             System.out.println("\t\t>");
         }
     }

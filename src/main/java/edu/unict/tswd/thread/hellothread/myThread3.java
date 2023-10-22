@@ -12,11 +12,14 @@ public class myThread3 extends Thread {
         System.out.println("myThread running pid "+t.toString());
         System.out.println(t.getName());
         for (int i = 0; i < 5000; i++) {
-            try {
                 System.out.println("\t\t>");
+            try {
                 sleep(1);
-                //sleep(new Random().nextInt(5)); // Poor Ascii ART
-            } catch (InterruptedException e) { }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            //sleep(new Random().nextInt(5)); // Poor Ascii ART
+
 
         }
     }

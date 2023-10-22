@@ -22,6 +22,8 @@ public class hello4 {
         for (int i = 0; i < 5000; i++) {
             System.out.println("<");
             sleep(new Random().nextInt(5)); // Poor Ascii ART
+            System.out.println("T status:"+t.getState());
+            System.out.println("T2 status:"+myRunnableThread.getState());
             //if ( t.isAlive() ) System.out.print("alive");
         }
         System.out.println("");

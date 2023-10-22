@@ -14,7 +14,8 @@ public class Client {
         while(true) {
             if (ClientThread.threadCount() < MAX_THREADS)
                 new ClientThread(addr);
-            Thread.currentThread().sleep(1000);
+            Thread.currentThread();
+            Thread.sleep(1000);
         }
     }
 }

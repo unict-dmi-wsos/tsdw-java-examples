@@ -2,6 +2,8 @@ package edu.unict.tswd.thread.hellothread;
 // Inspired by www.dmi.unict.it/tramonta/lessons/sd/jthread.tar
 import static java.lang.Thread.sleep;
 
+import java.util.Random;
+
 public class hello3 {
     public static void main(String[] args) throws InterruptedException {
         // Main is a deamon
@@ -19,8 +21,8 @@ public class hello3 {
         // In parallel here
         for (int i = 0; i < 5000; i++) {
             System.out.print("<");
-            sleep(1);
-            //sleep(new Random().nextInt(5)); // Poor Ascii ART
+            //sleep(1);
+            sleep(new Random().nextInt(5)); // Poor Ascii ART
         }
         System.out.println("This is the end");
     }

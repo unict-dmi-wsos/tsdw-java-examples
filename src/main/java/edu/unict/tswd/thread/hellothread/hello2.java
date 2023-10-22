@@ -16,8 +16,8 @@ public class hello2 {
         // Start
         myRunnableThread.start();
 
-        // In parallel here
-        for (int i = 0; i < 10; i++) {
+        // In parallel here 
+        for (int i = 0; i < 10000000; i++) {
             System.out.println("<");
         }
 
