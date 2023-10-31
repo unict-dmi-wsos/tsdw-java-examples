@@ -17,6 +17,8 @@ public class Server {
     private Worker log;
     private ServerSocket serv_sock;
     private Socket client_sock;
+    private boolean setClosed = false;
+    private int port = 8000;
 
     public Server() {
         start_server();
@@ -25,7 +27,8 @@ public class Server {
 
     public void start_server() {
         try {
-            serv_sock = new ServerSocket(8000);
+            serv_sock = new ServerSocket(port);
+            serv_sock.setReuseAddress(true);
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
@@ -35,13 +38,36 @@ public class Server {
     public void run() {
         while (true) {
             try {
-                client_sock = serv_sock.accept();
-                log = new Worker(client_sock);
-                log.start();
+                if (serv_sock != null) {
+                    client_sock = serv_sock.accept();
+                    log = new Worker(client_sock, this);
+                    log.start();
+                } else {
+                    System.out.println("serv_sock is null");
+                    System.exit(-1);
+                }
             } catch (Exception e) {
                 // TODO: handle exception
                 e.printStackTrace();
             }
+
+            if (this.setClosed) {
+                close_connection();
+                break;
+            }
         }
+    }
+
+    public void close_connection() {
+        try {
+            serv_sock.close();
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+    }
+
+    public synchronized void setClosed() {
+        setClosed = true;
     }
 }
