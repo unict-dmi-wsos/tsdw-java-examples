@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-/*
+/**
  * Server che mantiene un log dei client che si sono connessi
  * 
  * Comandi:
@@ -17,7 +17,6 @@ public class Server {
     private Worker log;
     private ServerSocket serv_sock;
     private Socket client_sock;
-    private boolean setClosed = false;
     private int port = 8000;
 
     public Server() {
@@ -25,16 +24,21 @@ public class Server {
         run();
     }
 
+    /**
+     * Metodo che inizializza la socket del server
+     */
     public void start_server() {
         try {
             serv_sock = new ServerSocket(port);
             serv_sock.setReuseAddress(true);
         } catch (Exception e) {
-            // TODO: handle exception
             e.printStackTrace();
         }
     }
 
+    /**
+     * Metodo in cui il server accetta nuove connessioni e lascia gestire le richieste a un worker
+     */
     public void run() {
         while (true) {
             try {
@@ -47,13 +51,7 @@ public class Server {
                     System.exit(-1);
                 }
             } catch (Exception e) {
-                // TODO: handle exception
                 e.printStackTrace();
-            }
-
-            if (this.setClosed) {
-                close_connection();
-                break;
             }
         }
     }
@@ -62,12 +60,7 @@ public class Server {
         try {
             serv_sock.close();
         } catch (Exception e) {
-            // TODO: handle exception
             e.printStackTrace();
         }
-    }
-
-    public synchronized void setClosed() {
-        setClosed = true;
     }
 }
