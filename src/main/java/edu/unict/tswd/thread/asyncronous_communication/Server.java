@@ -56,6 +56,9 @@ public class Server {
         }
     }
 
+    /**
+     * Metodo che chiude la socket del server
+     */
     public void close_connection() {
         try {
             serv_sock.close();
